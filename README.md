@@ -1,9 +1,8 @@
 # deoplete-minisnip
-A deoplete source for [vim-minisnip](https://github.com/joereynolds/vim-minisnip), the lightweight snippet manager.
 
-GIF HERE
+A Deoplete source for [vim-minisnip](https://github.com/joereynolds/vim-minisnip), the lightweight snippet manager.
 
-# Installation
+## Installation
 
 With vim-plug
 
@@ -12,3 +11,7 @@ Plug 'joereynolds/deoplete-minisnip'
 ```
 
 You may need to `:UpdateRemotePlugins`
+
+## Demo
+
+[![asciicast](https://asciinema.org/a/iDJMTBZfmTftp34SuWoPHpGAR.png)](https://asciinema.org/a/iDJMTBZfmTftp34SuWoPHpGAR)
