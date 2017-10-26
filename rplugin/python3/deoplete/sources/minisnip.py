@@ -1,3 +1,6 @@
+import os
+
+from pathlib import Path
 from .base import Base
 
 class Source(Base):
@@ -10,4 +13,12 @@ class Source(Base):
         self.min_pattern_length = 0
 
     def gather_candidates(self, context):
-        return self.vim.call('minisnip#ListSnippets', context['input'])
+        """Returns all snippets in the users
+        vim minisnip directory"""
+
+        home = str(Path.home())
+        snippets = os.listdir(home + '/.vim/minisnip')
+
+        cleaned = [snippet.split('_')[2] for snippet in snippets if context['filetype'] in snippet]
+
+        return [{'word': snippet} for snippet in cleaned]
