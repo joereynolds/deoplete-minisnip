@@ -11,7 +11,8 @@ class Source(Base):
         self.name = 'minisnip'
         self.mark = '[minisnip]'
         self.min_pattern_length = 0
-        self.snippets = os.listdir(str(Path.home()) + '/.vim/minisnip')
+        self.minisnip_dir = self.vim.eval('g:minisnip_dir')
+        self.snippets = os.listdir(self.minisnip_dir)
 
     def gather_candidates(self, context):
         """Returns all snippets in the users
