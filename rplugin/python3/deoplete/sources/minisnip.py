@@ -16,5 +16,6 @@ class Source(Base):
     def gather_candidates(self, context):
         """Returns all snippets in the users
         vim minisnip directory"""
-        cleaned = [snippet.split('_')[2] for snippet in self.snippets if context['filetype'] in snippet]
+        filetype = context['filetype']
+        cleaned = [snippet.split('_' + filetype + '_')[1] for snippet in self.snippets if filetype in snippet]
         return [{'word': snippet} for snippet in cleaned]
