@@ -1,6 +1,4 @@
 import os
-
-from pathlib import Path
 from .base import Base
 
 class Source(Base):
@@ -17,6 +15,8 @@ class Source(Base):
     def gather_candidates(self, context):
         """Returns all snippets in the users
         vim minisnip directory"""
-        filetype = context['filetype']
-        cleaned = [snippet.split('_' + filetype + '_')[1] for snippet in self.snippets if filetype in snippet]
+        filetype = '_' + context['filetype'] + '_'
+
+        cleaned = [snippet.split(filetype)[1] for snippet in self.snippets if filetype in snippet]
         return [{'word': snippet} for snippet in cleaned]
+
