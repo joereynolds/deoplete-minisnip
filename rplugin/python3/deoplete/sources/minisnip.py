@@ -20,7 +20,12 @@ class Source(Base):
             self.snippets = os.listdir(os.path.expanduser(self.minisnip_dir))
 
         ft = context['filetype']
-        ft_reg = '^_(' + format(ft.replace('.', '|')) + ')_'
+
+        # Converts compound filetypes into a prefix pattern.
+        # (`ruby.rspec` → `^_(ruby|rspec)_`)
+        #
+        # @see https://github.com/joereynolds/vim-minisnip/blob/b5bcaff0ddea13d3ce2cf25f4dc88b0569da60b1/autoload/minisnip.vim#L14-L20
+        ft_reg = '^_(' + ft.replace('.', '|') + ')_'
 
         candidates = []
 
